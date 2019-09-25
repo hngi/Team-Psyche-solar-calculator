@@ -1,0 +1,87 @@
+body{
+    background: #F5F5F5;
+}
+
+header{
+   
+    background: linear-gradient(258.03deg, rgba(78, 38, 236, 0.33) -0.91%, #B0FFDE 106.31%);
+    height: 100px;
+}
+.logo{
+    margin-left: 100px;   
+}
+
+.logo img{
+    padding: 25px;
+    height: 50px;
+}
+
+.add-form {
+    position: absolute;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    left: 100px;
+    top: 20%
+}
+.btn-add {
+    background: linear-gradient(270deg, #3E64FF 20.25%, #C8CDFF 87.25%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+}
+.btn-add-circle {
+    position: absolute;
+    background: #3E64FF;
+    color: white;
+    border-radius: 50px;
+    bottom: 10px;
+    right: 50px;
+    height: 50px;
+    width: 50px;
+    visibility: hidden;
+}
+
+.calc-info{
+    position: absolute;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    top: 13%;
+    right: 100px;
+    
+    
+}
+.calc-total{
+    color: white;
+    background: #3E64FF;
+
+}
+
+
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    /* Styles */
+
+    header{
+
+        height: 150px;
+    }
+    .logo{
+        margin-left: 50px;  
+        margin-right: 50px;  
+         
+    }
+    .logo img{
+        margin: 10px;
+        padding: 25px;
+        height: 50px;
+    }
+   .add-form{
+        left: 0;
+   }
+   .calc-info{
+        top: 15%;
+        right: 0;
+   }
+   .btn-add-circle{
+       visibility: visible;
+   }
+}
