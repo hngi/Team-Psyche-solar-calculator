@@ -1,0 +1,86 @@
+body {
+  background: #f5f5f5;
+}
+
+.header {
+  background: linear-gradient(
+    258.03deg,
+    rgba(78, 38, 236, 0.33) -0.91%,
+    #b0ffde 106.31%
+  );
+  padding: 0.5em 2em;
+}
+.bg-white {
+  background-color: white;
+  padding: 10px 20px 15px 20px;
+  border-radius: 10px;
+}
+.add-appliance {
+  position: relative;
+}
+.list-appliances {
+  position: absolute;
+  width: 550px;
+  max-width: 560px;
+  left: 4em;
+  top: -3.4em;
+}
+.watts {
+  position: relative;
+  top: 2.3em;
+  left: 0.5em;
+}
+.btn-add {
+  background: linear-gradient(270deg, #4869ee 20.25%, #c8cdff 87.25%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  color: white;
+}
+
+/* @media screen and (max-width: 500px) {
+  .expand {
+    width: 100%;
+    max-width: 100%;
+    padding-bottom: 2.5em;
+  }
+  .hide-small {
+    display: none;
+  }
+  .sm-responsive {
+    width: 100vw;
+    height: 3.5em;
+  }
+  .bolt {
+    position: relative;
+    top: 1.4em;
+    left: 2.3em;
+  }
+  .banner {
+    position: absolute;
+    top: 5em;
+    background: #3e64ff;
+    box-shadow: 0px 12px 26px rgba(62, 100, 255, 0.22);
+    border-radius: 8px;
+  }
+  .total-consumption span {
+    margin-top: 15px;
+    display: block;
+    color: white;
+  }
+  .total-consumption .con {
+    position: relative;
+    top: -1em;
+  }
+  .wh-day {
+    position: relative;
+    top: 1.4em;
+  }
+  .card-head {
+      position: relative;
+      top: -0.6em;
+  }
+  .card-foot {
+      position: relative;
+      top: 1em;
+  }
+} */
