@@ -37,7 +37,7 @@ const CalcInfo = ({ data }) => {
             </section>
             <div className="flex items-center">
               <img className="mr-3" src={Thunderbolt} alt="thunderbolt" />
-              <H2>{values}</H2>
+              <H2>{values}&nbsp;</H2>
               <span>Wh/day</span>
             </div>
           </div>

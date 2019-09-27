@@ -9,8 +9,20 @@ import { Stack, Cluster } from "../components/layouts";
 import { H4 } from "../components/typography";
 import { Light } from '../Theme';
 
+const LIST_KEY = 'appliances'
 
 class App extends Component {
+  constructor() {
+    super();
+      try {
+        const list = JSON.parse(localStorage.getItem(LIST_KEY));
+        if (list) this.state.data  = list;
+        else localStorage.setItem(LIST_KEY, JSON.stringify([]));
+      } catch(x) {
+        localStorage.setItem(LIST_KEY, JSON.stringify([]));
+      }
+  }
+
   state = {
     data: [],
     showAdd: false,
@@ -27,10 +39,16 @@ class App extends Component {
     );
   }
 
-  addItem = data => {
-    const newData = { key: this.generateQuickGuid(), ...data };
+  componentDidUpdate() {
+    localStorage.setItem(LIST_KEY, JSON.stringify(this.state.data));
+  }
 
-    this.setState({ data: [...this.state.data, newData] });
+  addItem = data => {
+    const newData = [
+      ...this.state.data, 
+      {  key: this.generateQuickGuid(), ...data  }
+    ] 
+    this.setState({ data: newData });
   };
 
   delItem = (key) => { 
@@ -71,7 +89,7 @@ class App extends Component {
                 <CalcInfo data={this.state.data} />
                 <section id="appliance-list">
                   <div className="calc-data">
-                    <H4 className="ttu ma3">Appliance List</H4>
+                    <H4 className="ttu ma3">Appliances - {this.state.data.length}</H4>
                   </div>
 
                   <DisplayTable

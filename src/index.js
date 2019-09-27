@@ -10,8 +10,8 @@ import MainLayout from "./layouts/Main";
 import App from "./views/App";
 
 // Assets
-import "./styles/App.css";
 import "./styles/tailwind.min.css";
+import "./styles/App.css";
 
 // ServiceWorker
 import * as serviceWorker from "./serviceWorker";
