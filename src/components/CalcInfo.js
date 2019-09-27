@@ -30,8 +30,9 @@ import Thunderbolt from '../assets/images/Thunderbolt.svg'
 
         return (
         <div className='calc-total'>
-          <h3 className="ttu ma3 tracked">Calculations</h3>
-          <div className=" dib ma3 ">  
+
+          <div className=" dib ma3 info "> 
+          <h3 className="ttu tracked">Calculations</h3> 
             <h4>Total Consumption</h4>
           </div>
           <div className=" dib ma2"> 

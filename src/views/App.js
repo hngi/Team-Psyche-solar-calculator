@@ -10,6 +10,7 @@ import CalcInfo from '../components/CalcInfo';
 
 
 
+
 class App extends Component {
 
   state = {
@@ -64,6 +65,12 @@ class App extends Component {
     }
   }
 
+  delItem = (key) => { 
+    this.setState({data: [...this.state.data.filter(
+      item => item.key !== key
+    )]})
+}
+
   render() {  
 
     return (
@@ -71,6 +78,7 @@ class App extends Component {
         <header>
           <div className='logo'>
             <img src={Logo} alt='logo'/>
+            
           </div>
         </header>
         <main>
@@ -100,10 +108,11 @@ class App extends Component {
                         <th>Number</th>
                         <th>Time</th>
                         <th>Energy</th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody>
-                        <DisplayTable data={this.state.data} />
+                        <DisplayTable delItem={this.delItem}  data={this.state.data} />
                     </tbody>
                   </table>
               </div>

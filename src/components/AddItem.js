@@ -49,19 +49,19 @@ class AddItem extends Component {
                     <div className='' >
                       <div className='ma3 dib'>
                         <label>Number of Appliance</label>
-                        <input type='number' placeholder='1' name='number' required
+                        <input type='number' placeholder='1' min='1' name='number' required
                         value={this.state.data.number} onChange={this.onChange}  />
                       </div>
                       <div className='ma3 dib'>
                         <label>Time  <span>Hr</span></label>
-                        <input type='number' placeholder='1' name='time' required
+                        <input type='number' placeholder='1' min='1' name='time' required
                          value={this.state.data.time} onChange={this.onChange}/>
                        
                       </div>
                       <div className='ma3 dib'>
                         
                         <label>Energy <span>Watt</span> </label>
-                        <input type='number' placeholder='1' name='energy' required
+                        <input type='number' placeholder='1' min='1' name='energy' required
                           value={this.state.data.energy} onChange={this.onChange}/>
                       </div>
                     </div>
