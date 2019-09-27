@@ -9,6 +9,7 @@ import { Stack, Tab, Outline, Cluster } from "../components/layouts";
 import { H4 } from "../components/typography";
 import { Light } from '../Theme';
 
+
 class App extends Component {
   state = {
     data: []
@@ -63,7 +64,14 @@ class App extends Component {
     };
   }
 
-  render() {
+  delItem = (key) => { 
+    this.setState({data: [...this.state.data.filter(
+      item => item.key !== key
+    )]})
+  }
+
+  render() {  
+
     return (
       <ThemeProvider theme={Light} className="App">
         <header>
@@ -101,7 +109,7 @@ class App extends Component {
                         </tr>
                       </thead>
                       <tbody>
-                        <DisplayTable data={this.state.data} />
+                        <DisplayTable delItem={this.delItem}  data={this.state.data} />
                       </tbody>
                     </table>
                 </section>

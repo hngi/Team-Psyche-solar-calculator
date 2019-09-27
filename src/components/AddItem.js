@@ -57,7 +57,7 @@ const AddItem = (props) => {
           <Input
             fullwidth
             type="number"
-            placeholder="1"
+            min="1"
             name="number"
             required
             value={state.data.number}
@@ -71,7 +71,7 @@ const AddItem = (props) => {
           <Input
             fullwidth
             type="number"
-            placeholder="1"
+            min="1"
             name="time"
             required
             value={state.data.time}
@@ -85,7 +85,7 @@ const AddItem = (props) => {
           <Input
             fullwidth
             type="number"
-            placeholder="1"
+            min="1"
             name="energy"
             required
             value={state.data.energy}
