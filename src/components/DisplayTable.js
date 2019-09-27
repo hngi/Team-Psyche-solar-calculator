@@ -1,14 +1,32 @@
-import React, { Component } from 'react'
-import TableData from './TableData';
+import React from "react";
+import TableData from "./TableData";
 
-class DisplayTable extends Component {
+const DisplayTable = ({ data, onItemDelete }) => {
+  return (
+    <table>
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Number</td>
+          <td>Time</td>
+          <td>Energy</td>
+          <td>...</td>
+        </tr>
+      </thead>
 
-   
-    render() {
-        return this.props.data.map((data, key)=>
-                <TableData  delItem={this.props.delItem} data={data} key={key} />
-        )
-    }
-}
+      <tbody>
+        {data.map((appliance, key)=> {
+            return (
+              <TableData
+                key={key}
+                data={appliance}
+                onDelete={onItemDelete}
+              />
+            );
+        })}
+      </tbody>
+    </table>
+  );
+};
 
-export default DisplayTable
+export default DisplayTable;

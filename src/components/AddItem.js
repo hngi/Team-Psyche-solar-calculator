@@ -1,19 +1,21 @@
 import React, { useState, useRef } from "react";
 import { Input, Button } from './forms';
 import { Stack } from "./layouts";
-import { log } from "../libs/helpers";
+// import { log } from "../libs/helpers";
 
 const Label = (props) => <label {...props} className="font-sans"/>
 
+const fields = {
+  data: {
+    appliance: "",
+    number: 1,
+    time: 1,
+    energy: 1
+  }
+};
+
 const AddItem = (props) => {
-  const [state, setState] = useState({
-    data: {
-      appliance: "",
-      number: 0,
-      time: 0,
-      energy: 0
-    }
-  });
+  const [state, setState] = useState(fields);
   const form = useRef();
 
   const onSubmit = e => {
@@ -21,14 +23,7 @@ const AddItem = (props) => {
     props.addItem(state.data);
     form.current.reset()
 
-    setState({
-      data: {
-        appliance: "",
-        number: 0,
-        time: 0,
-        energy: 0
-      }
-    });
+    setState(fields);
   };
 
   const onChange = e => {

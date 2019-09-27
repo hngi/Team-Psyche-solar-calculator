@@ -1,7 +1,7 @@
 import React from "react";
 import Thunderbolt from "../assets/svgs/Thunderbolt.svg";
 import { H4, P, H2 } from "./typography";
-import { Stack, Cluster, Tab } from "./layouts";
+import { Stack, Cluster } from "./layouts";
 
 const CalcInfo = ({ data }) => {
   const values = data
@@ -53,7 +53,7 @@ const CalcInfo = ({ data }) => {
               </P>
               <H4>{reqPanel}</H4>
             </div>
-            <div style={{"flex-grow": 2}} className="border-l px-5 flex flex-col justify-between flex-2 text-center">
+            <div className="border-l px-5 flex flex-col justify-between flex-2 text-center">
               <P small>
                 <b>Inverter / UPS Rating</b>
               </P>
