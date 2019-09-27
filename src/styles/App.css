@@ -16,35 +16,6 @@ header{
     height: 50px;
 }
 
-.add-form {
-    width: 450px;
-    position: absolute;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 12px;
-    left: 100px;
-    top: 20%
-}
-
-input[type=text] {
-    width: 100%;
-   
-    background: #f2f2f2;
-    padding: 12px 20px;
-    border: 1px solid #ccc;
-    border-radius: 7px;
-    box-sizing: border-box;
-  }
-  
-input[type=number] {
-  
-    background: #f2f2f2;
-    padding: 12px 20px;
-    border: 1px solid #ccc;
-    border-radius: 7px;
-    box-sizing: border-box;
-}
-
-  
 .btn-add {
     color: white;
     height: 50px;
@@ -66,26 +37,13 @@ input[type=number] {
     visibility: hidden;
 }
 
-input[type=text]:focus,input[type=number]:focus {
-    border: 3px solid rgb(157, 206, 207);
-  }
-
-.calc-info{
-    width: 600px;
-    position: absolute;
+.calc-info {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 12px;
-    top: 13%;
-    right: 100px;
-    
-    
+    max-width: 600px;
 }
-.calc-total{
-    
-    color: white;
-    background: #3E64FF;
-    height: 100%;
 
+.bg-blue {
+    background: #3E64FF;
 }
 
 table {
