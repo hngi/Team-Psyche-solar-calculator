@@ -1,0 +1,37 @@
+%heading {
+    font-family: 'Poppins', 'Montserrat', sans-serif;
+    &.font-light {
+        font-weight: 300;
+    }
+    
+    &.font-bold {
+        font-weight: 500;
+    }
+    // & + .paragraph {
+        // margin-top: 0;
+    // }
+}
+
+.h1 {
+    @extend %heading;
+    font-size: 45px;
+}
+
+.h2 {
+    @extend %heading;
+    font-size: 35px;
+}
+
+.h3 {
+    @extend %heading;
+    font-size: 25px; 
+}
+
+.h4 {
+    @extend %heading;
+    font-size: 18px;
+}
+
+.paragraph {
+    font-family: 'Roboto', sans-serif;
+}

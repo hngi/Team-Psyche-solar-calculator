@@ -1,215 +1,115 @@
-import React, { Component } from 'react';
-import Logo from '../assets/images/Logo.svg'
-import Thunderbolt from '../assets/images/Thunderbolt.svg'
+import React, { Component } from "react";
+import { ThemeProvider } from 'styled-components';
+import Logo from "../assets/images/solar-logo.png";
+import DisplayTable from "../components/DisplayTable";
+import AddItem from "../components/AddItem";
+import AddItemModal from "../components/AddItemModal";
+import CalcInfo from "../components/CalcInfo";
+import { Stack, Cluster } from "../components/layouts";
+import { H4 } from "../components/typography";
+import { Light } from '../Theme';
 
-
-
-
+const LIST_KEY = 'appliances'
 
 class App extends Component {
-
-  
-  componentDidMount(){
-    this.triggerModal();
+  constructor() {
+    super();
+      try {
+        const list = JSON.parse(localStorage.getItem(LIST_KEY));
+        if (list) this.state.data  = list;
+        else localStorage.setItem(LIST_KEY, JSON.stringify([]));
+      } catch(x) {
+        localStorage.setItem(LIST_KEY, JSON.stringify([]));
+      }
   }
 
-  triggerModal(){
-    // Get the modal
-    var modal = document.getElementById('myModal');
+  state = {
+    data: [],
+    showAdd: false,
+  };
 
-    // Get the button that opens the modal
-    var btn = document.getElementById("myBtn");
-
-    // Get the <span> element that closes the modal
-    var close = document.getElementById("close");
-
-    // When the user clicks the button, open the modal 
-    btn.onclick = function() {
-        modal.style.display = "block";
-    }
-
-    // When the user clicks on <span> (x), close the modal
-    close.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    }
+  generateQuickGuid() {
+    return (
+      Math.random()
+        .toString(36)
+        .substring(2, 15) +
+      Math.random()
+        .toString(36)
+        .substring(2, 15)
+    );
   }
 
-  handleSubmit(){
-    console.log('calculating')
+  componentDidUpdate() {
+    localStorage.setItem(LIST_KEY, JSON.stringify(this.state.data));
   }
 
-  render() {  
+  addItem = data => {
+    const newData = [
+      ...this.state.data, 
+      {  key: this.generateQuickGuid(), ...data  }
+    ] 
+    this.setState({ data: newData });
+  };
 
-  return (
-    <div className="App">
-      <header>
-       <div className='logo'>
-        <img src={Logo} alt='logo'/>
+  delItem = (key) => { 
+    this.setState({data: [...this.state.data.filter(
+      item => item.key !== key
+    )]})
+  }
 
-       </div>
-      </header>
-      <main>
-      <div className="mw9 center ph3-ns">
-        
-          <div className="fl add-form bg-white mobile">
-           
-              <div className=' '>
-             
-                  <div className='ma3 tc'>
-                    <h1>Add an appliance</h1>
-                  </div>
-                  <div>
-                    <div className='ma3'>
-                      <label className=''>Name of appliance</label>
-                      <input  type='text' placeholder='Televsion' />
-                    </div>
-                    <div className='' >
-                      <div className='ma3 dib'>
-                        <label>Number of Appliance</label>
-                        <input type='number' placeholder='1' />
-                      </div>
-                      <div className='ma3 dib'>
-                        <label>Time  <span>Hr</span></label>
-                        <input type='number' placeholder='1' />
-                       
-                      </div>
-                      <div className='ma3 dib'>
-                        
-                        <label>Energy <span>Watt</span> </label>
-                        <input type='number' placeholder='1' />
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <button className='btn-add' type='submit' onClick={this.handleSubmit}>Add  Appliance</button>
-                  </div>
-              </div>
-              </div>
+  toggle() {
+    this.setState({ ...this.state, showAdd: !this.state.showAdd })
+  }
 
-              <div id="myModal" className="modal">
-
-               
-                <div className="modal-content">
-                 
-                  <div className=' '>
-             
-             <div className='ma3 tc'>
-               <h1>Add an appliance</h1>
-             </div>
-             <div>
-               <div className='ma3'>
-                 <label className=''>Name of appliance</label>
-                 <input  type='text' placeholder='Televsion' />
-               </div>
-               <div className='' >
-                 <div className='ma3 dib'>
-                   <label>Number of Appliance</label>
-                   <input type='number' placeholder='1' />
-                 </div>
-                 <div className='ma3 dib'>
-                   <label>Time  <span>Hr</span></label>
-                   <input type='number' placeholder='1' />
-                  
-                 </div>
-                 <div className='ma3 dib'>
-                   
-                   <label>Energy <span>Watt</span> </label>
-                   <input type='number' placeholder='1' />
-                 </div>
-               </div>
-             </div>
-             <div>
-               <button className='btn-add' type='submit' onClick={this.handleSubmit}>Add  Appliance</button>
-             </div>
-
-             <div>
-               <button id='close' href='javascript;;'>Close</button>
-             </div>
-         </div>
-                </div>
-
-               </div>
-              
-             
-
-            </div>
-
-          
-          <div className='calc-info bg-white fl '>
-            <div className=''>
-              <div className='calc-total'>
-                <div className="mr4 ml4 mt3">
-                  <h3 className="ttu tracked">Calculations</h3>
-                </div>
-                <div className="dib mr4 ml4">  
-                  <h4>Total Consumption</h4>
-                </div>
-                <div className="dib mr4 ml4"> 
-                  <img src={Thunderbolt} alt='thunderbolt' />
-                </div >
-                <div className="dib mr4 ml4">300<span>Wh/day</span></div>
-              </div>
-              <div className='calc-data'>
-                <div className='ma3'>
-                  <h3 className='ttu'>Appliance List</h3>
-                </div>
-                <div className='ma3'>
-                <table>
-                  <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Number</th>
-                    <th>Time</th>
-                    <th>Energy</th>
-                  </tr>
-                  </thead>
-                 
-                  <tbody>
-                  <tr>
-                    <td>Cooker</td>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>20</td>
-                  </tr>
-                  <tr>
-                    <td>AC Conditioner</td>
-                    <td>5</td>
-                    <td>10</td>
-                    <td>70</td>
-                  </tr>
-                  <tr>
-                    <td>Radio</td>
-                    <td>2</td>
-                    <td>5</td>
-                    <td>10</td>
-                  </tr>
-                  </tbody>
-                  
-                 
-                </table>
-                </div>
-                
-              </div>
-            </div>
+  render() {
+    return (
+      <ThemeProvider theme={Light} className="App">
+        <header>
+          <div className="logo">
+            <img src={Logo} alt="logo" />
           </div>
-       
-    
+        </header>
 
-      <div >
-        <button id="myBtn" className='btn-add-circle' >+</button>
+        <main className="flex flex-col sm:flex-row p-5 lg:container justify-center  mx-auto">
+          {/* bg-blue-500 sm:bg-orange-500 md:bg-red-500 lg:bg-purple-500 */}
+          {(window.innerWidth > 667 || this.state.showAdd) && (
+            <div className="order-2 sm:order-1 w-full md:w-2/5 lg:w-1/3 bg-white rounded-lg">
+              <Cluster.Small>
+                <Stack>
+                  <H4>Add an appliance</H4>
+                  <AddItem addItem={this.addItem} />
+                  <AddItemModal addItem={this.addItem} />
+                </Stack>
+              </Cluster.Small>
+            </div>
+          )}
+          <div className="relative pb-20 flex-1 order-1 mb-5 sm:ml-5 -mt-16 calc-info bg-white rounded-lg shadow">
+            <Cluster.Small>
+              <Stack>
+                <CalcInfo data={this.state.data} />
+                <section id="appliance-list">
+                  <div className="calc-data">
+                    <H4 className="ttu ma3">Appliances - {this.state.data.length}</H4>
+                  </div>
 
-      </div>
-      </main>
-    </div>
-  );
-}
+                  <DisplayTable
+                    onItemDelete={this.delItem}
+                    data={this.state.data}
+                  />
+                </section>
+              </Stack>
+              <button
+                className="btn-add-circle sm:hidden"
+                onClick={this.toggle.bind(this)}
+              >
+                +
+              </button>
+            </Cluster.Small>
+          </div>
+        </main>
+      </ThemeProvider>
+    );
+  }
 }
 
 export default App;
