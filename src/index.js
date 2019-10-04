@@ -3,15 +3,18 @@ import ReactDOM from "react-dom";
 import { Router, Route, Switch } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
+
 // layout
 import MainLayout from "./layouts/Main";
 
 // views
+import Header from "./components/Header";
 import App from "./views/App";
 
 // Assets
 import "./styles/tailwind.min.css";
 import "./styles/App.css";
+import './styles/index.css';
 
 // ServiceWorker
 import * as serviceWorker from "./serviceWorker";
@@ -23,7 +26,8 @@ ReactDOM.render(
     <Switch>
       <MainLayout>
         <Switch>
-          <Route exact path="/" component={App} />
+          <Route exact path="/" component={Header} />
+          <Route path="/App" component={App} />
         </Switch>
       </MainLayout>
     </Switch>
