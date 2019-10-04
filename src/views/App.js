@@ -68,6 +68,7 @@ class App extends Component {
           <div className="logo">
             <img src={Logo} alt="logo" />
           </div>
+          <a href="/faq">FAQ</a>
         </header>
 
         <main className="flex flex-col sm:flex-row p-5 lg:container justify-center  mx-auto">

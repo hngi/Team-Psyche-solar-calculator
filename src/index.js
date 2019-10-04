@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Router, Route, Switch } from "react-router-dom";
 import { createBrowserHistory } from "history";
+import Faq from "./components/Faq";
+
 
 // layout
 import MainLayout from "./layouts/Main";
@@ -24,6 +26,7 @@ ReactDOM.render(
       <MainLayout>
         <Switch>
           <Route exact path="/" component={App} />
+          <Route name="/faq" component={Faq} />
         </Switch>
       </MainLayout>
     </Switch>
