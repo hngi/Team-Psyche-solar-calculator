@@ -13,17 +13,21 @@ const CalcInfo = ({ data }) => {
 
   //Inverter  rating in kW
   const intInvRate = values / 1000 / 0.8;
-  const invRate = Math.ceil(intInvRate * 25 * 100) / 100;
+  //Inverter ratings in KVA will then be
+  const invRate = Math.ceil(intInvRate*25) / 100;
 
   // UPS rating in kW
   const upsRate = Math.ceil((intInvRate + invRate) * 100) / 100;
 
-  // Backup batteries kWH
-  const intBut = (100 * 12 * 2) / values;
+  // Backup batteries Time in kWH
+  const intBut = (200 * 12 * 2) / values;
   const backupBatteries = 3 / intBut;
 
   // Required solar panel
-  const panel = 18 * 5;
+
+  /* Assuming that A 24V, 2.5KVA inverter system is to used with  two 12V batteries in series connection
+and suppose further that the capacity of our batteries are 5A each, then */
+  const panel = 24 * 5;
   const reqPanel = Math.ceil(values / panel / 100);
   const toPrecision = a => a.toFixed(2); 
 
